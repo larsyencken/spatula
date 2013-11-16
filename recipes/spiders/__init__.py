@@ -17,11 +17,13 @@ class TasteSpider(CrawlSpider):
     name = 'taste'
     allowed_domains = ['www.taste.com.au']
     start_urls = ['http://www.taste.com.au/']
-    rules = [Rule(
-        SgmlLinkExtractor(allow=['/recipes/\d+/[a-z+]+']),
-        'parse_recipe',
-        follow=True,
-    )]
+    rules = [
+        Rule(SgmlLinkExtractor(allow=['/recipes/\d+/.*']),
+             callback='parse_recipe',
+             follow=True),
+        Rule(SgmlLinkExtractor(deny=['/recipes/kitchen/.*']),
+             follow=True),
+    ]
 
     PATTERNS = {
         'rating': "//span[@itemprop='rating']//text()",
