@@ -27,6 +27,7 @@ class TasteSpider(CrawlSpider):
 
     PATTERNS = {
         'rating': "//span[@itemprop='rating']//text()",
+        'rating_count': "//td[@itemprop='review']//span[@itemprop='count']/text()",  # nopep8
         'ingredients': "//ul[@class='ingredient-table']//text()",
         'method': "//li[@class='methods']/p[@class='description']/text()",
         'prep_time': "//td[@class='prepTime']/em/text()",

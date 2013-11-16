@@ -9,6 +9,7 @@ from scrapy.item import Item, Field
 class RecipeItem(Item):
     url = Field()
     rating = Field()
+    rating_count = Field()
     prep_time = Field()
     cook_time = Field()
     difficulty = Field()
