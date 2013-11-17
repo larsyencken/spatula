@@ -21,7 +21,8 @@ class TasteSpider(CrawlSpider):
         Rule(SgmlLinkExtractor(allow=['/recipes/\d+/.*']),
              callback='parse_recipe',
              follow=True),
-        Rule(SgmlLinkExtractor(deny=['/recipes/kitchen/.*']),
+        Rule(SgmlLinkExtractor(deny=['/recipes/kitchen/.*',
+                                     '/articles/search.php.*']),
              follow=True),
     ]
 
@@ -34,6 +35,7 @@ class TasteSpider(CrawlSpider):
         'cook_time': "//td[@class='cookTime']/em/text()",
         'difficulty': "//td[@class='difficultyTitle']/em/text()",
         'serves': "//td[@class='servings']/em/text()",
+        'name': "//h1[@itemprop='name']/text()",
     }
 
     def parse_recipe(self, response):
