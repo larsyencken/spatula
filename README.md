@@ -1,3 +1,3 @@
-# recipe-crawler
+# spatula
 
-A simple crawler to pull data from Taste.com.au.
+A simple crawler to pull recipes and ingredients from online recipe sites.
